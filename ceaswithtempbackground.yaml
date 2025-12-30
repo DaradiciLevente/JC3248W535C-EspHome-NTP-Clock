@@ -1,0 +1,281 @@
+esphome:
+  name: ceaswithtemp
+  platformio_options:
+    upload_speed: 921600
+    board_build.flash_mode: dio
+    board_build.f_flash: 80000000L
+    board_build.f_cpu: 240000000L
+
+esp32:
+  board: esp32-s3-devkitc-1
+  variant: esp32s3
+  flash_size: 16MB
+  framework:
+    type: esp-idf
+    sdkconfig_options:
+      COMPILER_OPTIMIZATION_SIZE: y
+      CONFIG_ESP32S3_DEFAULT_CPU_FREQ_240: y
+      CONFIG_ESP32S3_DATA_CACHE_64KB: y
+      CONFIG_ESP32S3_DATA_CACHE_LINE_64B: y
+      CONFIG_SPIRAM_FETCH_INSTRUCTIONS: y
+      CONFIG_SPIRAM_RODATA: y
+
+psram:
+  mode: octal
+  speed: 80MHz
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  power_save_mode: none
+
+logger:
+
+api:
+
+sensor:
+  - platform: homeassistant
+    id: temp_bme
+    entity_id: sensor.bme280test_bme280_temperature_2
+
+ota:
+  platform: esphome
+
+spi:
+  - type: quad
+    clk_pin: 47
+    data_pins: [21, 48, 40, 39]
+
+i2c:
+  - sda: 4
+    scl: 8
+
+light:
+  - id: backlight
+    name: "Luminozitate Display"
+    platform: monochromatic
+    output: gpio_backlight_pwm
+    restore_mode: ALWAYS_ON
+
+
+output:
+  - id: gpio_backlight_pwm
+    platform: ledc
+    pin: 1
+    frequency: 20000 Hz   # elimină flicker
+
+
+time:
+  - platform: sntp
+    id: sntp_time
+    timezone: Europe/Bucharest
+
+# === INDEX CULOARE FUNDAL (NE-PERSISTENT) ===
+globals:
+  - id: bg_color_index
+    type: int
+    restore_value: no
+    initial_value: '11'
+
+font:
+  - file: "fonts/digital-7.ttf"
+    id: font_big
+    size: 160
+
+  - file: "fonts/digital-7.ttf"
+    id: font_small
+    size: 100
+
+  - file: "fonts/Roboto-Bold-Diacritice.ttf"
+    id: font_day
+    size: 48
+    glyphs: [
+      " ", "0","1","2","3","4","5","6","7","8","9",
+      ":", ".", ",", "%", "°", "+", "-",
+      "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
+      "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
+      "ă","â","î","ș","ț","Ă","Â","Î","Ș","Ț"
+    ]
+
+    
+  - file: "fonts/DancingScript-VariableFont_wght.ttf"
+    id: font_temp
+    size: 50
+
+image:
+  - file: "img/bg_01.png"
+    id: bg_01
+    type: RGB565
+
+  - file: "img/bg_02.png"
+    id: bg_02
+    type: RGB565
+
+  - file: "img/bg_03.png"
+    id: bg_03
+    type: RGB565
+
+  - file: "img/bg_04.png"
+    id: bg_04
+    type: RGB565
+
+  - file: "img/bg_05.png"
+    id: bg_05
+    type: RGB565
+
+  # === IMAGINI NOI ===
+  - file: "img/bgs_01.png"
+    id: bgs_01
+    type: RGB565
+
+  - file: "img/bgs_02.png"
+    id: bgs_02
+    type: RGB565
+
+  - file: "img/bgs_03.png"
+    id: bgs_03
+    type: RGB565
+
+  - file: "img/bgs_04.png"
+    id: bgs_04
+    type: RGB565
+
+  - file: "img/bgs_05.png"
+    id: bgs_05
+    type: RGB565
+
+  - file: "img/bgs_06.png"
+    id: bgs_06
+    type: RGB565
+
+  - file: "img/bgs_07.png"
+    id: bgs_07
+    type: RGB565
+
+  - file: "img/bgs_08.png"
+    id: bgs_08
+    type: RGB565
+
+display:
+  - id: main_display
+    platform: mipi_spi
+    model: JC3248W535
+    data_rate: 40MHz
+    rotation: 90
+    update_interval: 1s
+    auto_clear_enabled: true
+
+    lambda: |-
+      auto t = id(sntp_time).now();
+      if (!t.is_valid()) return;
+
+      // ==== CULORI POSIBILE ====
+      Color colors[8] = {
+        Color::BLACK,
+        Color(255, 0, 0),
+        Color(0, 255, 0),
+        Color(0, 0, 255),
+        Color(255, 255, 0),
+        Color(0, 255, 255),
+        Color(255, 0, 255),
+        Color::WHITE
+      };
+
+
+      // ==== FUNDAL IMAGINE ====
+      int idx = id(bg_color_index);
+      if (idx < 0 || idx > 12) idx = 0;
+
+      switch (idx) { 
+        case 0:  it.image(0, 0, id(bg_01));  break;
+        case 1:  it.image(0, 0, id(bg_02));  break;
+        case 2:  it.image(0, 0, id(bg_03));  break;
+        case 3:  it.image(0, 0, id(bg_04));  break;
+        case 4:  it.image(0, 0, id(bg_05));  break;
+
+        case 5:  it.image(0, 0, id(bgs_01)); break;
+        case 6:  it.image(0, 0, id(bgs_02)); break;
+        case 7:  it.image(0, 0, id(bgs_03)); break;
+        case 8:  it.image(0, 0, id(bgs_04)); break;
+        case 9:  it.image(0, 0, id(bgs_05)); break;
+        case 10: it.image(0, 0, id(bgs_06)); break;
+        case 11: it.image(0, 0, id(bgs_07)); break;
+        case 12: it.image(0, 0, id(bgs_08)); break;
+      }
+
+
+      // ==== ORA & MINUTE ====
+      char hm[16];
+      t.strftime(hm, sizeof(hm), "%H:%M");
+
+      // ==== SECUNDE ====
+      char ss[8];
+      t.strftime(ss, sizeof(ss), "%S");
+
+      // ==== CALCUL LATIME HH:MM ====
+      int x1, y1, w_hm, h1;
+      it.get_text_bounds(0, 0, hm, id(font_big), TextAlign::TOP_LEFT, &x1, &y1, &w_hm, &h1);
+
+      int spacing = 10;
+
+      // ==== POZITII ====
+      int x_hm = 20;
+      int y_hm = 3;
+
+      int x_ss = x_hm + w_hm + spacing;
+      int y_ss = y_hm + 5;
+
+      // ==== ORA & MINUTE CU UMBRA ====
+      it.printf(x_hm + 3, y_hm + 3, id(font_big), Color::BLACK, TextAlign::LEFT, "%s", hm);
+      it.printf(x_hm,     y_hm,     id(font_big), Color(255, 150, 200), TextAlign::LEFT, "%s", hm);
+
+      // ==== SECUNDE CU UMBRA ====
+      it.printf(x_ss + 3, y_ss + 3, id(font_small), Color::BLACK, TextAlign::LEFT, "%s", ss);
+      it.printf(x_ss,     y_ss,     id(font_small), Color(255, 3, 123), TextAlign::LEFT, "%s", ss);
+
+      // ==== ZIUA SĂPTĂMÂNII ====
+      const char* zile[] = {
+        "Duminică", "Luni", "Marți", "Miercuri", 
+        "Joi", "Vineri", "Sâmbătă" 
+      };
+
+      int zi_index = (t.day_of_week + 6) % 7;
+      const char* ziua = zile[zi_index];
+
+      // ==== ZI CU UMBRA ====
+      it.printf(240 + 3, 180 + 3, id(font_day), Color::BLACK, TextAlign::CENTER, "%s", ziua);
+      it.printf(240,     180,     id(font_day), Color(255, 64, 0), TextAlign::CENTER, "%s", ziua);
+      
+      // ==== TEMPERATURA DIN HOME ASSISTANT ====
+      if (!isnan(id(temp_bme).state)) {
+        char tempbuf[16];
+        snprintf(tempbuf, sizeof(tempbuf), "%.1f°C", id(temp_bme).state);
+
+        int x_right = 475;   // capătul din dreapta (maxX - 5)
+        int y_temp  = 180;   // aceeași linie cu ziua
+
+        // umbră
+        it.printf(x_right + 3, y_temp + 3, id(font_temp), Color::BLACK, TextAlign::CENTER_RIGHT, "%s", tempbuf);
+
+        // text
+        it.printf(x_right,     y_temp,     id(font_temp), Color(255, 255, 0), TextAlign::CENTER_RIGHT, "%s", tempbuf);
+      }
+
+
+
+      // ==== DATA ====
+      char datebuf[32];
+      t.strftime(datebuf, sizeof(datebuf), "%d.%m.%Y");
+
+      // ==== DATA CU UMBRA ====
+      it.printf(240 + 3, 250 + 3, id(font_small), Color::BLACK, TextAlign::CENTER, "%s", datebuf);
+      it.printf(240,     250,     id(font_small), Color(120, 255, 200), TextAlign::CENTER, "%s", datebuf);
+
+touchscreen:
+  - id: main_touchscreen
+    platform: axs15231
+    on_release:
+      then:
+        - lambda: |-
+           id(bg_color_index)++;
+           if (id(bg_color_index) > 12) id(bg_color_index) = 0;
