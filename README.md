@@ -157,3 +157,22 @@ This makes it possible to:
 • At night (23:00–07:00) → keep backlight off unless manually enabled
 
 This makes the dashboard behave like a smart, presence‑aware control panel.
+
+
+## 🧩 Available Versions
+
+This project includes **three different versions** of the NTP clock, each provided as a separate YAML file:
+
+### 1. Simple Version (No Home Assistant)
+**File:** `ceas.yaml`  
+A lightweight standalone clock.  
+The background color changes when the display is touched.
+
+### 2. Home Assistant Version (Outdoor Temperature)
+**File:** `ceaswithtemp.yaml`  
+Integrates with Home Assistant and displays additional data such as **outdoor temperature**.
+
+### 3. Background Image Version (Touch‑Activated)
+**File:** `ceaswithtempbackground.yaml`  
+Uses multiple background images that change each time the display is touched.
+
