@@ -17,7 +17,7 @@ The firmware is written entirely in YAML and includes:
 - smooth visual transitions and clean UI elements
 - optional Home Assistant sensors and data integration
 
-This repository contains all required resources: ESPHome configuration, display assets, fonts, wiring information, and setup instructions. The project is designed to be easy to reproduce, customize, and extend.
+This repository contains all required resources: ESPHome configuration, display assets, fonts and setup instructions. The project is designed to be easy to reproduce, customize, and extend.
 
 
 <p align="center"> <img src="assets/22.png" width="300"/> <img src="assets/11.png" width="300"/> </p>
