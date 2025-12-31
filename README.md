@@ -21,3 +21,31 @@ This repository contains all required resources: ESPHome configuration, display 
 
 
 <p align="center"> <img src="assets/22.png" width="300"/> <img src="assets/11.png" width="300"/> </p>
+
+
+## Features
+
+- **Accurate NTP time synchronization**  
+  Retrieves time from reliable NTP servers with automatic periodic updates.
+
+- **Custom UI layout**  
+  Displays time, date, weekday, and additional visual elements using a clean, modern design.
+
+- **High‑quality JC3248W535C TFT display**  
+  Utilizes the 3.2" IPS panel with crisp rendering and smooth transitions.
+
+- **ESPHome‑based firmware**  
+  Fully configurable in YAML, easy to modify, extend, and integrate with other devices.
+
+- **Home Assistant integration**  
+  Exposes sensors, states, and optional controls directly to Home Assistant.
+
+- **Custom fonts and image assets**  
+  Supports embedded PNGs, icons, and multiple font weights for a polished UI.
+
+- **Low power consumption**  
+  Efficient ESP32 operation suitable for 24/7 uptime.
+
+- **Easy to reproduce**  
+  Includes wiring diagrams, assets, and configuration files for straightforward assembly.
+
