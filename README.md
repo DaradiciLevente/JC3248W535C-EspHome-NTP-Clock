@@ -68,9 +68,7 @@ Additional items:
 
 # 🚀 Quick Start
 
-Click on the image to play the video.
-
-[![Video demo](https://img.youtube.com/vi/CEPckzUROvE/hqdefault.jpg)](https://youtu.be/CEPckzUROvE)
+---
 
 ## 🐍 1. Install Python 3.11 or 3.12
 
@@ -95,7 +93,7 @@ pip install --upgrade esphome==2025.11.0
 ## 📥 3. Clone this project
 
 ```
-git clone https://github.com/DaradiciLevente/ESP32-8048S070c-ESPHOME-HOME-ASSISTANT-DASHBOARD.git
+git clone https://github.com/DaradiciLevente/JC3248W535C-EspHome-NTP-Clock.git
 ```
 
 ## ⚙️ 4. Configure Wi‑Fi & API keys
@@ -107,17 +105,9 @@ wifi_password: "YOUR_WIFI_PASSWORD"
 
 ```
 
-The OTA / ESPHome API password is inside the main file (esp32-8048s070c-Dashboard-Final.yaml):
-
-```
-ota:
-  - platform: esphome
-    password: "a07ce4750cc57b5360162ba12f209d3f"
-```
-
 ## 🔌 5. Flash & run (compile + upload + logs)
 ```
-esphome run esp32-8048s070c-Dashboard-Final.yaml
+esphome run ceas.yaml
 ```
 
 ---
