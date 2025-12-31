@@ -132,6 +132,7 @@ This project exposes two Home Assistant entities for controlling the display:
 A simple ON/OFF switch that controls whether the display is illuminated.
 
 You can use it to:
+
 • Turn the display ON when motion is detected  
 • Turn the display OFF at night so it doesn’t disturb sleep  
 • Manually toggle the screen from the HA dashboard  
@@ -141,6 +142,7 @@ You can use it to:
 A dedicated **brightness control slider** allows you to adjust the display intensity directly from Home Assistant.
 
 This makes it possible to:
+
 • Dim the display in the evening  
 • Increase brightness during the day  
 • Create smooth transitions using automations  
