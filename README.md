@@ -32,7 +32,7 @@ This repository contains all required resources: ESPHome configuration, display 
   Displays time, date, weekday, and additional visual elements using a clean, modern design.
 
 - **High‑quality JC3248W535C TFT display**  
-  Utilizes the 3.2" IPS panel with crisp rendering and smooth transitions.
+  Utilizes the 3.5" IPS panel with crisp rendering and smooth transitions.
 
 - **ESPHome‑based firmware**  
   Fully configurable in YAML, easy to modify, extend, and integrate with other devices.
