@@ -1,5 +1,5 @@
 <h1 align="center">JC3248W535C – EspHome – NTP – Clock</h1>
-
+---
 
 
 
@@ -7,6 +7,7 @@
 
 
 ## Description
+---
 
 This project showcases an NTP‑synchronized clock built using the JC3248W535C display module and fully powered by **ESPHome**. The device retrieves accurate time from NTP servers, renders it on a 3.5" TFT display, and integrates seamlessly with **Home Assistant** for monitoring and automation.
 
@@ -24,6 +25,7 @@ This repository contains all required resources: ESPHome configuration, display 
 
 
 ## Features
+---
 
 - **Accurate NTP time synchronization**  
   Retrieves time from reliable NTP servers with automatic periodic updates.
@@ -67,7 +69,6 @@ Additional items:
 - **Optional enclosure** for protection and aesthetics
 
 # 🚀 Quick Start
-
 ---
 
 ## 🐍 1. Install Python 3.11 or 3.12
