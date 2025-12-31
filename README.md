@@ -66,3 +66,110 @@ Additional items:
 - **5V USB power source**
 - **Optional enclosure** for protection and aesthetics
 
+# 🚀 Quick Start
+
+Click on the image to play the video.
+
+[![Video demo](https://img.youtube.com/vi/CEPckzUROvE/hqdefault.jpg)](https://youtu.be/CEPckzUROvE)
+
+## 🐍 1. Install Python 3.11 or 3.12
+
+Download for Windows: https://www.python.org/downloads/windows/
+
+Make sure to check “Add Python to PATH” during installation.
+
+## 📦 2. Install ESPHome
+
+```
+pip install esphome==2025.11.0
+```
+
+OR if you already have it installed upgrade/downgrade to the following version using:
+
+```
+pip install --upgrade esphome==2025.11.0
+```
+
+⚠️ This is the version it was created with!
+
+## 📥 3. Clone this project
+
+```
+git clone https://github.com/DaradiciLevente/ESP32-8048S070c-ESPHOME-HOME-ASSISTANT-DASHBOARD.git
+```
+
+## ⚙️ 4. Configure Wi‑Fi & API keys
+Wi‑Fi credentials are stored in secrets.yaml: 
+
+```
+wifi_ssid: "YOUR_WIFI_NAME"
+wifi_password: "YOUR_WIFI_PASSWORD"
+
+```
+
+The OTA / ESPHome API password is inside the main file (esp32-8048s070c-Dashboard-Final.yaml):
+
+```
+ota:
+  - platform: esphome
+    password: "a07ce4750cc57b5360162ba12f209d3f"
+```
+
+## 🔌 5. Flash & run (compile + upload + logs)
+```
+esphome run esp32-8048s070c-Dashboard-Final.yaml
+```
+
+---
+
+## 🏠 Adding the device to Home Assistant
+
+Once the ESP32 boots and connects to Wi‑Fi:
+
+• Open Home Assistant.
+
+• Go to Settings → Devices & Services.
+
+• Home Assistant will automatically detect the ESPHome device.
+
+• Click “Configure” and enter the same API password used in the YAML file.
+
+The dashboard will now appear as a device with entities.
+
+---
+
+## 💡 Backlight & Brightness Control
+
+This project exposes two Home Assistant entities for controlling the display:
+
+### 1. Backlight Switch
+A simple ON/OFF switch that controls whether the display is illuminated.
+
+You can use it to:
+• Turn the display ON when motion is detected  
+• Turn the display OFF at night so it doesn’t disturb sleep  
+• Manually toggle the screen from the HA dashboard  
+• Integrate it into automations, scenes, or scripts  
+
+### 2. Brightness Slider
+A dedicated **brightness control slider** allows you to adjust the display intensity directly from Home Assistant.
+
+This makes it possible to:
+• Dim the display in the evening  
+• Increase brightness during the day  
+• Create smooth transitions using automations  
+• Match brightness to ambient light or time of day  
+
+---
+
+## Example automation idea:
+
+• If any motion sensor in the room detects movement → turn on backlight
+
+• If no motion for 30 seconds → turn off backlight
+
+• At night (23:00–07:00) → keep backlight off unless manually enabled
+
+This makes the dashboard behave like a smart, presence‑aware control panel.
+
+---
