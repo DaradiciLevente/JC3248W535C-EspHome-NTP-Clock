@@ -49,3 +49,20 @@ This repository contains all required resources: ESPHome configuration, display 
 - **Easy to reproduce**  
   Includes wiring diagrams, assets, and configuration files for straightforward assembly.
 
+## Hardware Requirements
+
+This project uses the **JC3248W535C all‑in‑one module**, which includes:
+
+- **ESP32‑S3 MCU (integrated on board)**
+- **3.5" TFT Display (480×320)**
+- **Factory‑wired connections between MCU and display**
+- **On‑board power regulation and connectors**
+
+No manual wiring is required — the module comes fully assembled and ready to flash with ESPHome.
+
+Additional items:
+
+- **USB‑C cable** for flashing and powering the device
+- **5V USB power source**
+- **Optional enclosure** for protection and aesthetics
+
