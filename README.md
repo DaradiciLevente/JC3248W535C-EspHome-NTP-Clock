@@ -176,3 +176,12 @@ Integrates with Home Assistant and displays additional data such as **outdoor te
 **File:** `ceaswithtempbackground.yaml`  
 Uses multiple background images that change each time the display is touched.
 
+## 📜 License
+
+This project is released as open‑source software.  
+You are free to use, modify, and extend the code and assets included in this repository, as long as you respect the terms of the chosen license.
+
+All YAML configurations, images, fonts, and documentation are provided for educational and personal use.  
+Commercial use is allowed only if permitted by the license you select.
+
+If you fork or redistribute this project, please include proper attribution to the original author.
