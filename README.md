@@ -1,1 +1,3 @@
-TEST...
+# JC3248W535C - EspHome - NTP - Clock
+
+[![Watch the video](https://img.youtube.com/vi/KXD6XMGUkCg/maxresdefault.jpg)](https://youtu.be/KXD6XMGUkCg?si=G9tBf9vHF6RZ90qc)
