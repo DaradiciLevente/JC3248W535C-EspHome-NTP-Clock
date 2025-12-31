@@ -1,7 +1,5 @@
 <h1 align="center">JC3248W535C – EspHome – NTP – Clock</h1>
-
-
-
+<br><br><br><br><br>
 
 <p align="center">
   Click on the image to watch the video.
