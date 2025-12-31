@@ -92,7 +92,7 @@ pip install --upgrade esphome==2025.11.0
 git clone https://github.com/DaradiciLevente/JC3248W535C-EspHome-NTP-Clock.git
 ```
 
-## ⚙️ 4. Configure Wi‑Fi & API keys
+## ⚙️ 4. Configure Wi‑Fi
 Wi‑Fi credentials are stored in secrets.yaml: 
 
 ```
@@ -117,8 +117,6 @@ Once the ESP32 boots and connects to Wi‑Fi:
 • Go to Settings → Devices & Services.
 
 • Home Assistant will automatically detect the ESPHome device.
-
-• Click “Configure” and enter the same API password used in the YAML file.
 
 The dashboard will now appear as a device with entities.
 
