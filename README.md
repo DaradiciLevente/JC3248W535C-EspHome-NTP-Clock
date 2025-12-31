@@ -8,7 +8,7 @@
 
 ## Description
 
-This project showcases an NTP‑synchronized clock built using the JC3248W535C display module and fully powered by **ESPHome**. The device retrieves accurate time from NTP servers, renders it on a 3.2" TFT display, and integrates seamlessly with **Home Assistant** for monitoring and automation.
+This project showcases an NTP‑synchronized clock built using the JC3248W535C display module and fully powered by **ESPHome**. The device retrieves accurate time from NTP servers, renders it on a 3.5" TFT display, and integrates seamlessly with **Home Assistant** for monitoring and automation.
 
 The firmware is written entirely in YAML and includes:
 - real‑time NTP synchronization
